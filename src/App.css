@@ -1,0 +1,14 @@
+html {
+  scroll-behavior: smooth;
+}
+
+.app {
+  text-align: center;
+  font-family: sans-serif;
+}
+
+button {
+  padding: 0.5rem 1rem;
+  font-size: 16px;
+  cursor: pointer;
+}
