@@ -2,6 +2,7 @@ import React, { useRef, useState } from "react";
 import Webcam from "react-webcam";
 import axios from "axios";
 import { Camera, Image as ImageIcon, RefreshCcw } from "lucide-react";
+import ApiErrorPopup from "../../components/errorException/ApiErrorPopup";
 
 export default function ClassifyByImage() {
   const [file, setFile] = useState(null);
@@ -10,6 +11,7 @@ export default function ClassifyByImage() {
   const [loading, setLoading] = useState(false);
   const [showCamera, setShowCamera] = useState(false);
   const [showResultPopup, setShowResultPopup] = useState(false);
+  const [apiError, setApiError] = useState(false);
 
   const webcamRef = useRef(null);
 
@@ -57,10 +59,10 @@ export default function ClassifyByImage() {
       setShowResultPopup(true);
     } catch (error) {
       console.error("Prediction failed:", error);
-      setResult("ERROR");
-      setShowResultPopup(true);
+      setApiError(true);
     } finally {
       setLoading(false);
+      setFile(null);
     }
   };
 
@@ -70,6 +72,7 @@ export default function ClassifyByImage() {
     setResult(null);
     setShowResultPopup(false);
     setShowCamera(false);
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   return (
@@ -100,7 +103,7 @@ export default function ClassifyByImage() {
           </button>
         </div>
 
-        {/* Hình mặc định
+        {/* Hình mặc định */}
         {!preview && (
           <div className="mt-6 flex justify-center items-center">
             <div className="w-[300px] h-[200px] object-contain rounded border border-dashed border-green-300 flex flex-col justify-center items-center p-4">
@@ -110,7 +113,7 @@ export default function ClassifyByImage() {
               </p>
             </div>
           </div>
-        )} */}
+        )}
 
         {/* Preview hình sau khi chọn hoặc chụp */}
         {preview && (
@@ -183,7 +186,7 @@ export default function ClassifyByImage() {
             )}
             <p className="text-3xl font-bold text-green-700 mb-4">{result}</p>
             <p className="text-xl font-bold italic text-red-800 mb-4">
-              Please throw in {result} bin
+              Please throw in {result} bag
             </p>
             <button
               onClick={() => setShowResultPopup(false)}
@@ -194,6 +197,7 @@ export default function ClassifyByImage() {
           </div>
         </div>
       )}
+      {apiError && <ApiErrorPopup onClose={() => setApiError(false)} />}
     </div>
   );
 }

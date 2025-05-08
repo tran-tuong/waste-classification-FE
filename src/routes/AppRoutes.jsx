@@ -6,6 +6,7 @@ import Guide from "../pages/Guide";
 import ClassifyByImage from "../pages/Classification/ClassifyByImage";
 import AutoWithIoT from "../pages/Classification/AutoWithIoT";
 import IoTControl from "../pages/IoTControl";
+import NotFound from "../pages/NotFound";
 
 const ScrollToTop = () => {
   const location = useLocation();
@@ -30,6 +31,7 @@ const AppRoutes = () => (
         <Route path="/classify/image" element={<ClassifyByImage />} />
         <Route path="/classify/iot" element={<AutoWithIoT />} />
         <Route path="/iot-control" element={<IoTControl />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </Layout>
   </BrowserRouter>

@@ -8,6 +8,8 @@ import {
   FaExclamationTriangle,
   FaQuestion,
 } from "react-icons/fa";
+import BinBusyPopup from "../../components/errorException/BinBusyPopup";
+import ApiErrorPopup from "../../components/errorException/ApiErrorPopup";
 
 const bins = [
   { id: "organic", label: "Organic", icon: <FaLeaf />, color: "bg-green-500" },
@@ -35,6 +37,8 @@ export default function AutoWithIoT() {
   const [countdown, setCountdown] = useState(5);
   const [showPopup, setShowPopup] = useState(false);
   const [showCamera, setShowCamera] = useState(false);
+  const [binBusy, setBinBusy] = useState(false);
+  const [apiError, setApiError] = useState(false);
 
   const webcamRef = useRef(null);
 
@@ -100,10 +104,15 @@ export default function AutoWithIoT() {
       setResult(predictedClass);
       handleOpenBin(predictedClass);
     } catch (error) {
-      console.error("Prediction failed:", error);
-      setResult("Error during prediction.");
+      if (error.response?.status === 409) {
+        setBinBusy(true); // Show busy popup
+      } else {
+        console.error("Prediction failed:", error);
+        setApiError(true);
+      }
     } finally {
       setLoading(false);
+      setFile(null);
     }
   };
 
@@ -117,6 +126,7 @@ export default function AutoWithIoT() {
     setPreview(null);
     setResult(null);
     setShowCamera(false);
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   const getBinLabel = (id) => {
@@ -162,8 +172,14 @@ export default function AutoWithIoT() {
 
         <button
           onClick={handleUpload}
-          disabled={loading}
-          className="mt-6 w-full bg-green-600 text-white py-3 rounded hover:bg-green-700 transition disabled:opacity-50"
+          disabled={loading || !file}
+          className={`mt-6 w-full py-3 rounded transition 
+            ${
+              !file || loading
+                ? "bg-green-600/55 hover:bg-green-700/55 text-white"
+                : "bg-green-600 hover:bg-green-700 text-white"
+            }
+            ${loading ? "opacity-50" : ""}`}
         >
           {loading ? "Predicting..." : "Upload & Predict"}
         </button>
@@ -227,7 +243,6 @@ export default function AutoWithIoT() {
         </div>
       )}
 
-      {/* Popup hiển thị khi mở thùng */}
       {showPopup && (
         <div className="fixed inset-0 bg-gray-500/50 flex items-center justify-center z-50">
           <div className="bg-white p-6 rounded-xl shadow-xl text-center max-w-sm w-full">
@@ -252,6 +267,10 @@ export default function AutoWithIoT() {
           </div>
         </div>
       )}
+
+      {/* Popup khi thùng đang bận */}
+      {binBusy && <BinBusyPopup onClose={() => setBinBusy(false)} />}
+      {apiError && <ApiErrorPopup onClose={() => setApiError(false)} />}
     </div>
   );
 }

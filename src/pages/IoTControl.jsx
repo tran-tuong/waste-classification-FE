@@ -6,6 +6,8 @@ import {
   FaExclamationTriangle,
   FaQuestion,
 } from "react-icons/fa";
+import BinBusyPopup from "../components/errorException/BinBusyPopup";
+import ApiErrorPopup from "../components/errorException/ApiErrorPopup";
 
 const bins = [
   {
@@ -42,6 +44,8 @@ const IoTControl = () => {
   const [openedBin, setOpenedBin] = useState(null);
   const [countdown, setCountdown] = useState(0);
   const [showModal, setShowModal] = useState(false);
+  const [binBusy, setBinBusy] = useState(false);
+  const [apiError, setApiError] = useState(false);
 
   useEffect(() => {
     let timer;
@@ -67,9 +71,12 @@ const IoTControl = () => {
       setCountdown(5);
       setShowModal(true);
     } catch (error) {
-      alert(
-        "Error opening bin: " + error?.response?.data?.detail || error.message
-      );
+      if (error.response?.status === 409) {
+        setBinBusy(true);
+      } else {
+        console.log(error?.response?.data?.detail || error.message);
+        setApiError(true);
+      }
     }
   };
 
@@ -123,6 +130,8 @@ const IoTControl = () => {
           </div>
         </div>
       )}
+      {binBusy && <BinBusyPopup onClose={() => setBinBusy(false)} />}
+      {apiError && <ApiErrorPopup onClose={() => setApiError(false)} />}
     </div>
   );
 };
