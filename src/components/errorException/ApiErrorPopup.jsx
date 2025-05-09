@@ -5,10 +5,10 @@ const ApiErrorPopup = ({ onClose }) => {
     <div className="fixed inset-0 bg-black/40 flex items-center justify-center z-50">
       <div className="bg-white rounded-lg shadow-xl p-6 max-w-md text-center border-l-8 border-red-500">
         <h2 className="text-2xl font-bold text-red-600 mb-3 animate-pulse">
-          Functional Error
+          Ops Error!
         </h2>
         <p className="text-gray-700 mb-4">
-          We couldn’t connect to the server. Please contact to admin to fix the problems.
+          Couldn’t connect to the server. Please try again in a few minutes.
         </p>
         <button
           onClick={onClose}

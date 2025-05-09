@@ -109,6 +109,7 @@ export default function AutoWithIoT() {
       } else {
         console.error("Prediction failed:", error);
         setApiError(true);
+        setPreview(null);
       }
     } finally {
       setLoading(false);
@@ -161,6 +162,18 @@ export default function AutoWithIoT() {
             Use Camera
           </button>
         </div>
+
+        {/* Hình mặc định */}
+        {!preview && (
+          <div className="mt-6 flex justify-center items-center">
+            <div className="w-[300px] h-[200px] object-contain rounded border border-dashed border-green-600/60 flex flex-col justify-center items-center p-4">
+              <ImageIcon className="w-12 h-12 text-green-600/60 mb-4" />
+              <p className="text-center text-green-800/60  italic">
+                Please upload the image
+              </p>
+            </div>
+          </div>
+        )}
 
         {preview && (
           <img
@@ -268,7 +281,6 @@ export default function AutoWithIoT() {
         </div>
       )}
 
-      {/* Popup khi thùng đang bận */}
       {binBusy && <BinBusyPopup onClose={() => setBinBusy(false)} />}
       {apiError && <ApiErrorPopup onClose={() => setApiError(false)} />}
     </div>

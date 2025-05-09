@@ -82,7 +82,7 @@ export default function ClassifyByImage() {
       </h1>
 
       <div className="max-w-xl mx-auto bg-white p-6 rounded-2xl shadow-lg border border-green-200">
-        <div className="flex flex-col md:flex-row gap-4 justify-between items-center">
+        <div className="flex flex-col sm:flex-row gap-4 justify-between items-center">
           <label className="flex items-center gap-2 text-green-700 font-medium cursor-pointer">
             <ImageIcon className="w-5 h-5" />
             <input
@@ -106,9 +106,9 @@ export default function ClassifyByImage() {
         {/* Hình mặc định */}
         {!preview && (
           <div className="mt-6 flex justify-center items-center">
-            <div className="w-[300px] h-[200px] object-contain rounded border border-dashed border-green-300 flex flex-col justify-center items-center p-4">
-              <ImageIcon className="w-12 h-12 text-green-300 mb-4" />
-              <p className="text-center text-green-500  italic">
+            <div className="w-[300px] h-[200px] object-contain rounded border border-dashed border-green-600/60 flex flex-col justify-center items-center p-4">
+              <ImageIcon className="w-12 h-12 text-green-600/60 mb-4" />
+              <p className="text-center text-green-800/60  italic">
                 Please upload the image
               </p>
             </div>
@@ -134,7 +134,7 @@ export default function ClassifyByImage() {
           </button>
           <button
             onClick={handleReset}
-            className="flex items-center justify-center gap-1 bg-gray-100 border border-gray-300 text-gray-700 py-3 px-4 rounded hover:bg-gray-200 transition"
+            className="flex items-center justify-center gap-1 bg-green-700/80 border border-gray-300 text-white py-3 px-4 rounded hover:bg-green-900/80 transition"
           >
             <RefreshCcw size={16} />
             Reset
