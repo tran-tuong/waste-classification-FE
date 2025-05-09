@@ -2,7 +2,7 @@ import React, { useRef, useState } from "react";
 import Webcam from "react-webcam";
 import axios from "axios";
 import { Camera, Image as ImageIcon, RefreshCcw } from "lucide-react";
-import ApiErrorPopup from "../../components/errorException/ApiErrorPopup";
+import ApiErrorPopup from "../../components/errorExpection/ApiErrorPopup";
 
 export default function ClassifyByImage() {
   const [file, setFile] = useState(null);

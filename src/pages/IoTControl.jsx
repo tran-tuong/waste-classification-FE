@@ -6,8 +6,8 @@ import {
   FaExclamationTriangle,
   FaQuestion,
 } from "react-icons/fa";
-import BinBusyPopup from "../components/errorException/BinBusyPopup";
-import ApiErrorPopup from "../components/errorException/ApiErrorPopup";
+import BinBusyPopup from "../components/errorExpection/BinBusyPopup";
+import ApiErrorPopup from "../components/errorExpection/ApiErrorPopup";
 
 const bins = [
   {
