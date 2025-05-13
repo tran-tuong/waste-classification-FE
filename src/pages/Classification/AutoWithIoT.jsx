@@ -9,7 +9,8 @@ import BinOpenPopup from "../../components/bins/BinOpenPopup";
 import CameraPopup from "../../components/camera/CameraPopup";
 import BinBusyPopup from "../../components/errorHandling/BinBusyPopup";
 import ApiErrorPopup from "../../components/errorHandling/ApiErrorPopup";
-import { PredictButton } from "../../components/ui/ActionButton";
+import { PredictButton, ResetButton } from "../../components/ui/ActionButton";
+import { RefreshCcw } from "lucide-react";
 
 export default function AutoWithIoT() {
   const [file, setFile] = useState(null);
@@ -88,7 +89,7 @@ export default function AutoWithIoT() {
       handleOpenBin(predictedClass);
     } catch (error) {
       if (error.response?.status === 409) {
-        setBinBusy(true); // Show busy popup
+        setBinBusy(true);
       } else {
         console.error("Prediction failed:", error);
         setApiError(true);
@@ -121,21 +122,29 @@ export default function AutoWithIoT() {
 
       <div className="max-w-2xl mx-auto mb-12 bg-white p-6 rounded-lg shadow">
         {/* Image upload and camera controls */}
-        <ImageUploader 
-          onFileChange={handleFileChange} 
-          onCameraClick={() => setShowCamera(true)} 
+        <ImageUploader
+          onFileChange={handleFileChange}
+          onCameraClick={() => setShowCamera(true)}
         />
 
         {/* Image preview */}
         <ImagePreview preview={preview} />
 
         {/* Predict button */}
-        <div className="mt-6">
-          <PredictButton 
-            onClick={handleUpload} 
-            disabled={!file || loading} 
-            loading={loading} 
-          />
+        <div className="mt-6 flex gap-4">
+          {!result && (
+            <PredictButton
+              onClick={handleUpload}
+              disabled={!file || loading}
+              loading={loading}
+            />
+          )}
+
+          {result && (
+            <ResetButton 
+              onClick={handleReset}
+            />
+          )}
         </div>
 
         {/* Classification result */}
@@ -151,10 +160,10 @@ export default function AutoWithIoT() {
 
       {/* Bin open popup */}
       {showPopup && (
-        <BinOpenPopup 
-          bins={binData} 
-          openedBin={openedBin} 
-          countdown={countdown} 
+        <BinOpenPopup
+          bins={binData}
+          openedBin={openedBin}
+          countdown={countdown}
         />
       )}
 

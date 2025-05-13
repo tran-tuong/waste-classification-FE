@@ -5,8 +5,8 @@ const ActionButton = ({ onClick, disabled, loading, icon, label, className, type
   // Define button styles based on type
   const styles = {
     primary: `w-full bg-green-600 text-white py-3 rounded hover:bg-green-700 disabled:opacity-50 transition`,
-    secondary: `flex items-center justify-center gap-1 bg-green-700/80 border border-gray-300 text-white py-3 px-4 rounded hover:bg-green-900/80 transition`,
-    reset: `flex items-center justify-center gap-1 bg-green-600 border border-green-600 text-white py-3 px-4 rounded hover:bg-green-800 transition`
+    secondary: `w-full flex items-center justify-center gap-1 bg-green-700/80 border border-gray-300 text-white py-3 px-4 rounded hover:bg-green-900/80 transition`,
+    reset: `flex items-center justify-center gap-1 bg-green-900/90 text-white py-3 px-4 rounded hover:bg-green-600 transition`
   };
 
   const baseStyle = styles[type] || styles.primary;
@@ -30,7 +30,7 @@ export const PredictButton = ({ onClick, disabled, loading }) => (
     onClick={onClick}
     disabled={disabled}
     loading={loading}
-    label={loading ? "Predicting..." : "Upload & Predict"}
+    label={loading ? "Predicting..." : "Predict"}
     type="primary"
   />
 );
@@ -40,7 +40,7 @@ export const ResetButton = ({ onClick }) => (
     onClick={onClick}
     icon={<RefreshCcw size={16} />}
     label="Try Again"
-    type="reset"
+    type="secondary"
   />
 );
 

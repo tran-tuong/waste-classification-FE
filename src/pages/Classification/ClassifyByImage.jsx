@@ -6,7 +6,10 @@ import ImagePreview from "../../components/image/ImagePreview";
 import ClassificationResult from "../../components/image/ClassificationResult";
 import CameraPopup from "../../components/camera/CameraPopup";
 import ApiErrorPopup from "../../components/errorHandling/ApiErrorPopup";
-import ActionButton, { PredictButton, ResetButton } from "../../components/ui/ActionButton";
+import ActionButton, {
+  PredictButton,
+  ResetButton,
+} from "../../components/ui/ActionButton";
 
 export default function ClassifyByImage() {
   const [file, setFile] = useState(null);
@@ -88,9 +91,9 @@ export default function ClassifyByImage() {
 
       <div className="max-w-xl mx-auto bg-white p-6 rounded-2xl shadow-lg border border-green-200">
         {/* Image upload and camera controls */}
-        <ImageUploader 
-          onFileChange={handleFileChange} 
-          onCameraClick={() => setShowCamera(true)} 
+        <ImageUploader
+          onFileChange={handleFileChange}
+          onCameraClick={() => setShowCamera(true)}
         />
 
         {/* Image preview */}
@@ -98,18 +101,22 @@ export default function ClassifyByImage() {
 
         {/* Action buttons */}
         <div className="flex gap-4 mt-6">
-          <PredictButton 
-            onClick={handleUpload} 
-            disabled={!file || loading} 
-            loading={loading} 
-          />
-          
-          <ActionButton
-            onClick={handleReset}
-            icon={<RefreshCcw size={16} />}
-            label="Reset"
-            type="secondary"
-          />
+          {!result && (
+            <PredictButton
+              onClick={handleUpload}
+              disabled={!file || loading}
+              loading={loading}
+            />
+          )}
+
+          {(result || file || preview ) && !loading && !showResultPopup && (
+            <ActionButton
+              onClick={handleReset}
+              icon={<RefreshCcw size={16} />}
+              label="Reset"
+              type="reset"
+            />
+          )}
         </div>
       </div>
 
@@ -127,7 +134,10 @@ export default function ClassifyByImage() {
         result={result}
         preview={preview}
         showPopup={showResultPopup}
-        onClosePopup={() => setShowResultPopup(false)}
+        onClosePopup={() => {
+          setShowResultPopup(false);
+          setResult(null);
+        }}
       />
 
       {/* Error popup */}
