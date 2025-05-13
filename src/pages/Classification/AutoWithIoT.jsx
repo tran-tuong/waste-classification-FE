@@ -1,32 +1,15 @@
 import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
-import { Camera, Image as ImageIcon, RefreshCcw } from "lucide-react";
-import {
-  FaLeaf,
-  FaRecycle,
-  FaExclamationTriangle,
-  FaQuestion,
-} from "react-icons/fa";
+import binData from "../../constants/binData";
+import ImageUploader from "../../components/image/ImageUploader";
+import ImagePreview from "../../components/image/ImagePreview";
+import ClassificationResult from "../../components/image/ClassificationResult";
+import BinGrid from "../../components/bins/BinGrid";
+import BinOpenPopup from "../../components/bins/BinOpenPopup";
+import CameraPopup from "../../components/camera/CameraPopup";
 import BinBusyPopup from "../../components/errorHandling/BinBusyPopup";
 import ApiErrorPopup from "../../components/errorHandling/ApiErrorPopup";
-import CameraPopup from "../../components/CameraPopup";
-
-const bins = [
-  { id: "organic", label: "Organic", icon: <FaLeaf />, color: "bg-green-500" },
-  {
-    id: "recycle",
-    label: "Recycle",
-    icon: <FaRecycle />,
-    color: "bg-blue-500",
-  },
-  {
-    id: "hazardous",
-    label: "Hazardous",
-    icon: <FaExclamationTriangle />,
-    color: "bg-red-500",
-  },
-  { id: "other", label: "Other", icon: <FaQuestion />, color: "bg-gray-500" },
-];
+import { PredictButton } from "../../components/ui/ActionButton";
 
 export default function AutoWithIoT() {
   const [file, setFile] = useState(null);
@@ -130,11 +113,6 @@ export default function AutoWithIoT() {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
-  const getBinLabel = (id) => {
-    const bin = bins.find((b) => b.id === id);
-    return bin ? bin.label : "";
-  };
-
   return (
     <div className="min-h-screen bg-green-50 py-10 px-4 relative">
       <h1 className="text-3xl font-bold text-center text-green-700 mb-8">
@@ -142,94 +120,45 @@ export default function AutoWithIoT() {
       </h1>
 
       <div className="max-w-2xl mx-auto mb-12 bg-white p-6 rounded-lg shadow">
-        <div className="flex flex-col md:flex-row gap-4 justify-between items-center">
-          <label className="flex items-center gap-2 text-green-700 font-medium cursor-pointer">
-            <ImageIcon className="w-5 h-5" />
-            <input
-              type="file"
-              accept="image/*"
-              onChange={handleFileChange}
-              className="hidden"
-            />
-            Upload Image
-          </label>
+        {/* Image upload and camera controls */}
+        <ImageUploader 
+          onFileChange={handleFileChange} 
+          onCameraClick={() => setShowCamera(true)} 
+        />
 
-          <button
-            onClick={() => setShowCamera(true)}
-            className="flex items-center gap-2 bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600"
-          >
-            <Camera className="w-5 h-5" />
-            Use Camera
-          </button>
+        {/* Image preview */}
+        <ImagePreview preview={preview} />
+
+        {/* Predict button */}
+        <div className="mt-6">
+          <PredictButton 
+            onClick={handleUpload} 
+            disabled={!file || loading} 
+            loading={loading} 
+          />
         </div>
 
-        {/* Hình mặc định */}
-        {!preview && (
-          <div className="mt-6 flex justify-center items-center">
-            <div className="w-[300px] h-[200px] object-contain rounded border border-dashed border-green-600/60 flex flex-col justify-center items-center p-4">
-              <ImageIcon className="w-12 h-12 text-green-600/60 mb-4" />
-              <p className="text-center text-green-800/60  italic">
-                Please upload the image
-              </p>
-            </div>
-          </div>
-        )}
-
-        {preview && (
-          <img
-            src={preview}
-            alt="Preview"
-            className="rounded-md border border-gray-300 mt-4 w-[300px] object-contain mx-auto"
-          />
-        )}
-
-        <button
-          onClick={handleUpload}
-          disabled={loading || !file}
-          className={`mt-6 w-full py-3 rounded transition 
-            ${
-              !file || loading
-                ? "bg-green-600/55 hover:bg-green-700/55 text-white"
-                : "bg-green-600 hover:bg-green-700 text-white"
-            }
-            ${loading ? "opacity-50" : ""}`}
-        >
-          {loading ? "Predicting..." : "Upload & Predict"}
-        </button>
-
-        {result && (
-          <div className="flex justify-between mt-6">
-            <h2 className="text-lg font-semibold text-gray-700">
-              Your waste is: <span className="text-green-600">{result}</span>
-            </h2>
-
-            <button
-              onClick={handleReset}
-              className="flex items-center justify-center gap-1 bg-green-600 border border-green-600 text-white py-3 px-4 rounded hover:bg-green-800 transition"
-            >
-              <RefreshCcw size={16} />
-              Try Again
-            </button>
-          </div>
-        )}
+        {/* Classification result */}
+        <ClassificationResult
+          result={result}
+          preview={preview}
+          onReset={handleReset}
+        />
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
-        {bins.map((bin) => (
-          <div
-            key={bin.id}
-            className={`rounded-xl shadow-lg p-6 flex flex-col items-center ${bin.color} text-white transition-all duration-300`}
-          >
-            <div className="text-5xl mb-4">{bin.icon}</div>
-            <h2 className="text-xl font-semibold mb-2">{bin.label} Bin</h2>
-            {openedBin === bin.id && (
-              <p className="mt-2 text-2xl font italic">Bin is now opened.</p>
-            )}
-          </div>
-        ))}
-      </div>
+      {/* Bin grid */}
+      <BinGrid bins={binData} openedBin={openedBin} />
 
-      {/* Popup Camera */}
+      {/* Bin open popup */}
+      {showPopup && (
+        <BinOpenPopup 
+          bins={binData} 
+          openedBin={openedBin} 
+          countdown={countdown} 
+        />
+      )}
+
+      {/* Camera popup */}
       {showCamera && (
         <CameraPopup
           webcamRef={webcamRef}
@@ -238,31 +167,7 @@ export default function AutoWithIoT() {
         />
       )}
 
-      {showPopup && (
-        <div className="fixed inset-0 bg-gray-500/50 flex items-center justify-center z-50">
-          <div className="bg-white p-6 rounded-xl shadow-xl text-center max-w-sm w-full">
-            {bins.map((bin) =>
-              bin.id === openedBin ? (
-                <div key={bin.id}>
-                  <div className="flex justify-center text-6xl mb-4 text-green-600/30">
-                    {bin.icon}
-                  </div>
-                  <h2 className="text-2xl font-bold mb-2 text-emerald-600">
-                    <a className="text-3xl font-extrabold uppercase">
-                      {bin.label}
-                    </a>{" "}
-                    bin is open
-                  </h2>
-                  <p className="text-xl italic text-red-500">
-                    Closing in {countdown}s...
-                  </p>
-                </div>
-              ) : null
-            )}
-          </div>
-        </div>
-      )}
-
+      {/* Error popups */}
       {binBusy && <BinBusyPopup onClose={() => setBinBusy(false)} />}
       {apiError && <ApiErrorPopup onClose={() => setApiError(false)} />}
     </div>
