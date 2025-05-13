@@ -1,54 +1,52 @@
-import { Link } from "react-router-dom";
 import {
   FaEnvelope,
   FaPhone,
   FaMapMarkerAlt,
-  FaFacebook,
-  FaTwitter,
-  FaInstagram,
+  FaLeaf,
 } from "react-icons/fa";
 
 const Footer = () => (
-  <footer className="bg-green-600 text-white py-6">
-    <div className="mx-auto px-4 flex flex-col sm:flex-row lg:ml-40 lg:mr-40 justify-between items-start gap-8">
-      {/* About Section */}
-      <div className="sm:w-1/2">
-        <h2 className="text-2xl font-bold mb-2">Smart Waste</h2>
-        <p className="text-sm leading-relaxed">
-          A smart and eco-friendly platform for classifying and managing waste
-          using AI and IoT technologies.
-        </p>
+  <footer className="bg-green-600 text-white py-10">
+    <div className="container mx-auto px-4 max-w-6xl">
+      <div className="flex flex-col md:flex-row justify-between items-center md:items-start gap-8">
+        {/* About Section */}
+        <div className="max-w-md text-center md:text-left space-y-3">
+          <h2 className="text-2xl font-bold flex items-center justify-center md:justify-start">
+            <FaLeaf className="mr-2 text-green-200" /> Waste Wise
+          </h2>
+          <p className="text-sm leading-relaxed">
+            A smart and eco-friendly platform for classifying and managing waste
+            using AI and IoT technologies to create a cleaner environment.
+          </p>
+        </div>
+
+        {/* Contact Info */}
+        <div className="text-center md:text-right space-y-3">
+          <h3 className="text-xl font-semibold mb-2">Contact Us</h3>
+          <div className="space-y-3 text-sm">
+            <div className="flex items-center justify-center md:justify-end gap-2 hover:text-green-200 transition duration-300">
+              <span>support@wastewise.com</span>
+              <FaEnvelope className="text-green-200" />
+            </div>
+            <div className="flex items-center justify-center md:justify-end gap-2 hover:text-green-200 transition duration-300">
+              <span>+84 123 456 789</span>
+              <FaPhone className="text-green-200" />
+            </div>
+            <div className="flex items-center justify-center md:justify-end gap-2 hover:text-green-200 transition duration-300">
+              <span>No 1 Trinh Van Bo, Hanoi</span>
+              <FaMapMarkerAlt className="text-green-200" />
+            </div>
+          </div>
+        </div>
       </div>
 
-      {/* Contact Info */}
-      <div className="space-y-3 text-sm">
-        <p className="flex items-center gap-2">
-          <FaEnvelope /> support@wastewise.com
-        </p>
-        <p className="flex items-center gap-2">
-          <FaPhone /> +84 123 456 789
-        </p>
-        <p className="flex items-center gap-2">
-          <FaMapMarkerAlt /> No 1 Trinh Van Bo, Hanoi
+      {/* Copyright */}
+      <div className="mt-10 pt-6 border-t border-green-500 text-center">
+        <p className="text-xs tracking-wide">
+          &copy; {new Date().getFullYear()} Smart Waste. All rights reserved.
         </p>
       </div>
     </div>
-    {/* Social Media */}
-    {/* <div className="mt-8 flex justify-center gap-6 text-white text-xl">
-      <a href="#" className="hover:text-gray-100" aria-label="Facebook">
-        <FaFacebook />
-      </a>
-      <a href="#" className="hover:text-gray-100" aria-label="Twitter">
-        <FaTwitter />
-      </a>
-      <a href="#" className="hover:text-gray-100" aria-label="Instagram">
-        <FaInstagram />
-      </a>
-    </div> */}
-    {/* Copyright */}
-    {/* <div className="text-center text-sm mt-1 opacity-80">
-      © 2025 Smart Waste System. All rights reserved.
-    </div> */}
   </footer>
 );
 
