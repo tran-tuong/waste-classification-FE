@@ -43,44 +43,6 @@ export default function Home() {
           <source src={heroVideo} type="video/mp4" />
           Your browser does not support the video tag.
         </video>
-        {/*         
-        <div className="relative z-20 max-w-4xl">
-          <motion.h1 
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6"
-          >
-            Waste Wise
-          </motion.h1>
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.3 }}
-            className="text-xl md:text-2xl mb-8"
-          >
-            Smart waste management powered by AI technology
-          </motion.p>
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 0.6 }}
-            className="flex flex-col sm:flex-row gap-4 justify-center"
-          >
-            <Link
-              to="/classify/image"
-              className="px-8 py-4 bg-green-500 text-white font-bold rounded-lg shadow-lg hover:bg-green-600 transition transform hover:scale-105"
-            >
-              Get Started
-            </Link>
-            <Link
-              to="/guide"
-              className="px-8 py-4 border-2 border-white text-white font-bold rounded-lg hover:bg-white hover:text-green-600 transition transform hover:scale-105"
-            >
-              Learn More
-            </Link>
-          </motion.div>
-        </div> */}
       </section>
 
       {/* About Section with image */}
@@ -163,7 +125,7 @@ export default function Home() {
               {
                 title: "Interactive Voice Feedback",
                 description:
-                  "Voice notifications for user actions and presence detection.",
+                  "Voice notifications for user actions.",
                 image: featureImage,
               },
               {
@@ -482,7 +444,7 @@ export default function Home() {
               {
                 title: "Bin Selection",
                 description:
-                  "Press the corresponding bin button to dispose of the waste.",
+                  "Automated in the website or press the bin button to dispose of the waste.",
                 icon: (
                   <svg
                     className="w-12 h-12 text-green-600 mx-auto mb-4"
@@ -503,7 +465,7 @@ export default function Home() {
               {
                 title: "Guided Experience",
                 description:
-                  "Let Waste Wise guide you with voice and visual feedback.",
+                  "Waste Wise guide you with voice and visual feedback.",
                 icon: (
                   <svg
                     className="w-12 h-12 text-green-600 mx-auto mb-4"
@@ -538,27 +500,6 @@ export default function Home() {
               </motion.div>
             ))}
           </div>
-
-          {/* Video demo section */}
-          {/* <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-            className="mt-16 text-center"
-          >
-            <h3 className="text-2xl font-bold text-green-700 mb-6">See Waste Wise in Action</h3>
-            <div className="aspect-w-16 aspect-h-9 rounded-xl overflow-hidden shadow-xl mx-auto max-w-4xl">
-              <video
-                controls
-                poster={smartBinImage}
-                className="w-full h-full object-cover"
-              >
-                <source src={heroVideo} type="video/mp4" />
-                Your browser does not support the video tag.
-              </video>
-            </div>
-          </motion.div> */}
         </div>
       </section>
 
@@ -673,34 +614,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
-      {/* Final Call to Action */}
-      {/* <section className="py-16 md:py-24 bg-gradient-to-r from-green-600 to-emerald-600 text-white text-center relative overflow-hidden">
-        <div className="absolute inset-0 bg-black/20 z-0"></div>
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 1 }}
-          viewport={{ once: true }}
-          className="relative z-10 max-w-4xl mx-auto px-4"
-        >
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            Ready to Make a Difference?
-          </h2>
-          <p className="text-xl mb-8 max-w-2xl mx-auto">
-            Start sorting your waste smarter with Waste Wise today and join thousands of users already making an environmental impact!
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link
-              to="/classify/iot"
-              className="px-8 py-4 bg-white text-green-700 font-bold rounded-lg shadow-lg hover:scale-105 transition inline-block"
-            >
-              Try Waste Wise Now
-            </Link>
-            
-          </div>
-        </motion.div>
-      </section> */}
     </main>
   );
 }

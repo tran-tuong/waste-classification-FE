@@ -353,62 +353,6 @@ const Guide = () => {
           </div>
         </div>
 
-        {/* Community Impact Section */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center mb-16">
-          <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-            className={`rounded-xl overflow-hidden shadow-xl h-80 ${
-              isMobile ? "order-2" : "order-1"
-            }`}
-          >
-            <img
-              src={communityImage}
-              alt="Community waste management"
-              className="w-full h-full object-cover"
-            />
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-            className={isMobile ? "order-1" : "order-2"}
-          >
-            <h3 className="text-2xl md:text-3xl font-bold text-green-700 mb-6">
-              Writing Our Collective Story
-            </h3>
-            <p className="text-gray-700 mb-6">
-              When an entire community properly sorts waste, the impact
-              multiplies. Neighborhoods with effective waste sorting see cleaner
-              streets, lower waste management costs, and often lower taxes
-              related to waste disposal.
-            </p>
-            <p className="text-gray-700 mb-6">
-              Cities with strong recycling programs have created thousands of
-              green jobs, turning waste management into economic opportunity.
-              Together, we're writing a success story that benefits everyone.
-            </p>
-            <div className="flex space-x-3">
-              <div className="text-green-700 font-semibold">
-                <span className="text-4xl">87%</span>
-                <p className="text-sm">Waste Diverted</p>
-              </div>
-              <div className="text-blue-600 font-semibold">
-                <span className="text-4xl">12k</span>
-                <p className="text-sm">New Green Jobs</p>
-              </div>
-              <div className="text-red-500 font-semibold">
-                <span className="text-4xl">60%</span>
-                <p className="text-sm">Reduced Landfill</p>
-              </div>
-            </div>
-          </motion.div>
-        </div>
-
         {/* CTA Section */}
         <motion.div
           initial={{ opacity: 0 }}
@@ -490,7 +434,7 @@ const Guide = () => {
                   strokeLinecap="round"
                   strokeLinejoin="round"
                   strokeWidth={2}
-                   d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"
+                  d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"
                 />
               </svg>
               Use Smart Bin Technology
