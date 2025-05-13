@@ -1,16 +1,14 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
-
-// Import images (replace with your actual images in your project)
-import organicWasteImage from "../assets/default.png";
-import recyclableWasteImage from "../assets/default.png";
-import hazardousWasteImage from "../assets/default.png";
-import otherWasteImage from "../assets/default.png";
+import organicWasteImage from "../assets/logo2.png";
+import recyclableWasteImage from "../assets/logo2.png";
+import hazardousWasteImage from "../assets/logo2.png";
+import otherWasteImage from "../assets/logo2.png";
 import heroImage from "../assets/logo2.png";
-import smartBinImage from "../assets/default.png";
-import communityImage from "../assets/default.png";
-import natureImage from "../assets/default.png";
+import smartBinImage from "../assets/logo2.png";
+import communityImage from "../assets/logo2.png";
+import natureImage from "../assets/logo2.png";
 
 const Guide = () => {
   // Animate items as they appear in viewport

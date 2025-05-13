@@ -3,12 +3,12 @@ import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
 import heroVideo from "../assets/hero-section.mp4";
 import wasteWise from "../assets/logo2.png";
-import recyclableImage from "../assets/default.png";
-import hazardousImage from "../assets/default.png";
-import organicImage from "../assets/default.png";
-import smartBinImage from "../assets/default.png";
-import featureImage from "../assets/default.png";
-import mobileAppImage from "../assets/default.png";
+import recyclableImage from "../assets/logo2.png";
+import hazardousImage from "../assets/logo2.png";
+import organicImage from "../assets/logo2.png";
+import smartBinImage from "../assets/logo2.png";
+import featureImage from "../assets/logo2.png";
+import mobileAppImage from "../assets/logo2.png";
 
 export default function Home() {
   const [isMobile, setIsMobile] = useState(false);
