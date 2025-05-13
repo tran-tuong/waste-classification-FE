@@ -1,13 +1,13 @@
 import { useState, useEffect } from "react";
-import axios from "axios"; // Gọi API backend
+import axios from "axios";
 import {
   FaLeaf,
   FaRecycle,
   FaExclamationTriangle,
   FaQuestion,
 } from "react-icons/fa";
-import BinBusyPopup from "../components/errorExpection/BinBusyPopup";
-import ApiErrorPopup from "../components/errorExpection/ApiErrorPopup";
+import BinBusyPopup from "../components/errorHandling/BinBusyPopup";
+import ApiErrorPopup from "../components/errorHandling/ApiErrorPopup";
 
 const bins = [
   {
