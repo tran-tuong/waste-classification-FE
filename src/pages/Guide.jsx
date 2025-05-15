@@ -45,7 +45,7 @@ const Guide = () => {
             backgroundAttachment: "fixed",
           }}
         />
-        <div className="absolute inset-0 bg-black/50 z-10"></div>
+        <div className="absolute inset-0 bg-black/30 z-10"></div>
         <div className="relative z-20 text-center px-4">
           <motion.h1
             initial={{ opacity: 0, y: -20 }}
