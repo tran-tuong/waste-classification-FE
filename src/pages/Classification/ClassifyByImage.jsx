@@ -10,6 +10,7 @@ import ActionButton, {
   PredictButton,
   ResetButton,
 } from "../../components/ui/ActionButton";
+import { getApiUrl, ENDPOINTS } from "../../config/api";
 
 export default function ClassifyByImage() {
   const [file, setFile] = useState(null);
@@ -53,7 +54,7 @@ export default function ClassifyByImage() {
     try {
       setLoading(true);
       const response = await axios.post(
-        "http://localhost:8000/predict",
+        getApiUrl(ENDPOINTS.PREDICT),
         formData,
         {
           headers: {

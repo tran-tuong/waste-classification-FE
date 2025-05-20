@@ -11,6 +11,7 @@ import BinBusyPopup from "../../components/errorHandling/BinBusyPopup";
 import ApiErrorPopup from "../../components/errorHandling/ApiErrorPopup";
 import { PredictButton, ResetButton } from "../../components/ui/ActionButton";
 import { RefreshCcw } from "lucide-react";
+import { getApiUrl, ENDPOINTS } from "../../config/api";
 
 export default function AutoWithIoT() {
   const [file, setFile] = useState(null);
@@ -76,7 +77,7 @@ export default function AutoWithIoT() {
     try {
       setLoading(true);
       const response = await axios.post(
-        "http://localhost:8000/predict_iot",
+        getApiUrl(ENDPOINTS.PREDICT_IOT),
         formData,
         {
           headers: {
@@ -140,11 +141,7 @@ export default function AutoWithIoT() {
             />
           )}
 
-          {result && (
-            <ResetButton 
-              onClick={handleReset}
-            />
-          )}
+          {result && <ResetButton onClick={handleReset} />}
         </div>
 
         {/* Classification result */}

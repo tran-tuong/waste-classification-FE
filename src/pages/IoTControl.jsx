@@ -5,6 +5,7 @@ import BinGrid from "../components/bins/BinGrid";
 import BinOpenPopup from "../components/bins/BinOpenPopup";
 import BinBusyPopup from "../components/errorHandling/BinBusyPopup";
 import ApiErrorPopup from "../components/errorHandling/ApiErrorPopup";
+import { getApiUrl, ENDPOINTS } from "../config/api";
 
 const IoTControl = () => {
   const [openedBin, setOpenedBin] = useState(null);
@@ -30,7 +31,7 @@ const IoTControl = () => {
 
   const handleOpenBin = async (binId, binIndex) => {
     try {
-      await axios.post("http://localhost:8000/control_bin", {
+      await axios.post(getApiUrl(ENDPOINTS.CONTROL_BIN), {
         bin_index: binIndex,
       });
       setOpenedBin(binId);
