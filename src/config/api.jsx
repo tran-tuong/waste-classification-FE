@@ -1,5 +1,14 @@
+const ENV = import.meta.env.VITE_ENV;
+
+const getBaseUrl = () => {
+  if (ENV === 'prod') {
+    return import.meta.env.VITE_API_URL_PROD;
+  }
+  return import.meta.env.VITE_API_URL_DEV;
+};
+
 const API_CONFIG = {
-  BASE_URL: "http://localhost:8000",
+  BASE_URL: getBaseUrl(),
   ENDPOINTS: {
     PREDICT: "/predict",
     PREDICT_IOT: "/predict_iot",
