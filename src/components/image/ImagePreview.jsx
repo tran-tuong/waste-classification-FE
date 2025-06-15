@@ -19,7 +19,7 @@ const ImagePreview = ({ preview }) => {
     <img
       src={preview}
       alt="Preview"
-      className="rounded-md border border-gray-300 mt-4 w-[300px] object-contain mx-auto"
+      className="w-[224px] h-[224px] object-cover mx-auto rounded-md border border-gray-300 mt-4"
     />
   );
 };
