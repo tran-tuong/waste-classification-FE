@@ -24,7 +24,7 @@ const ClassificationResult = ({ result, preview, showPopup, onClosePopup }) => {
             <img
               src={preview}
               alt="Predicted"
-              className="mx-auto mb-4 w-full max-w-xs rounded border object-contain"
+              className="w-[224px] h-[224px] object-cover mx-auto rounded-md border border-gray-300 mt-4"
             />
           )}
           <p className="text-2xl sm:text-3xl font-bold text-green-700 mb-3">

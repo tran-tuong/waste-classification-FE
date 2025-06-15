@@ -3,12 +3,8 @@ import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
 import heroVideo from "../assets/hero-section.mp4";
 import wasteWise from "../assets/logo2.png";
-import recyclableImage from "../assets/logo2.png";
-import hazardousImage from "../assets/logo2.png";
-import organicImage from "../assets/logo2.png";
 import smartBinImage from "../assets/logo2.png";
-import featureImage from "../assets/logo2.png";
-import mobileAppImage from "../assets/logo2.png";
+import webImage from "../assets/web.png";
 
 export default function Home() {
   const [isMobile, setIsMobile] = useState(false);
@@ -114,25 +110,25 @@ export default function Home() {
                 title: "AI-Powered Classification",
                 description:
                   "Using ResNet50 transfer learning to achieve high-accuracy waste recognition.",
-                image: recyclableImage,
+                image: wasteWise,
               },
               {
-                title: "Smart Bin Control",
+                title: "IoT Bin Control",
                 description:
-                  "Smart Bin with real-time status display and automated sorting.",
+                  "IoT Bin with real-time status display and automated sorting.",
                 image: smartBinImage,
               },
               {
                 title: "Interactive Voice Feedback",
                 description:
                   "Voice notifications for user actions.",
-                image: featureImage,
+                image: wasteWise,
               },
               {
                 title: "Seamless Web Integration",
                 description:
                   "Manage AI predictions and device control easily via our friendly web app.",
-                image: mobileAppImage,
+                image: webImage,
               },
             ].map((feature, idx) => (
               <motion.div
@@ -173,48 +169,14 @@ export default function Home() {
               viewport={{ once: true }}
               className={`${isMobile ? "order-2" : "order-1"}`}
             >
-              <div className="grid grid-cols-2 gap-4">
                 <div className="rounded-lg overflow-hidden shadow-md">
                   <img
-                    src={recyclableImage}
-                    alt="Recyclable Waste"
+                    src={wasteWise}
+                    alt="Neuron Network"
                     className="w-full h-full object-cover"
                   />
-                  <div className="bg-blue-500 text-white py-2 px-3 text-center font-medium">
-                    Recyclable
-                  </div>
                 </div>
-                <div className="rounded-lg overflow-hidden shadow-md">
-                  <img
-                    src={hazardousImage}
-                    alt="Hazardous Waste"
-                    className="w-full h-full object-cover"
-                  />
-                  <div className="bg-red-500 text-white py-2 px-3 text-center font-medium">
-                    Hazardous
-                  </div>
-                </div>
-                <div className="rounded-lg overflow-hidden shadow-md">
-                  <img
-                    src={organicImage}
-                    alt="Organic Waste"
-                    className="w-full h-full object-cover"
-                  />
-                  <div className="bg-green-500 text-white py-2 px-3 text-center font-medium">
-                    Organic
-                  </div>
-                </div>
-                <div className="rounded-lg overflow-hidden shadow-md">
-                  <img
-                    src={featureImage}
-                    alt="Other Waste"
-                    className="w-full h-full object-cover"
-                  />
-                  <div className="bg-gray-500 text-white py-2 px-3 text-center font-medium">
-                    Other
-                  </div>
-                </div>
-              </div>
+                
             </motion.div>
 
             <motion.div
@@ -234,13 +196,6 @@ export default function Home() {
               </p>
               <ul className="space-y-3 text-lg">
                 <li className="flex items-center">
-                  <span className="inline-block w-4 h-4 bg-red-500 rounded-full mr-3"></span>
-                  <span>
-                    <strong>Hazardous</strong>: Batteries, chemicals, medical
-                    waste
-                  </span>
-                </li>
-                <li className="flex items-center">
                   <span className="inline-block w-4 h-4 bg-green-500 rounded-full mr-3"></span>
                   <span>
                     <strong>Organic</strong>: Food waste, plant material,
@@ -251,6 +206,13 @@ export default function Home() {
                   <span className="inline-block w-4 h-4 bg-blue-500 rounded-full mr-3"></span>
                   <span>
                     <strong>Recyclable</strong>: Paper, plastics, metals, glass
+                  </span>
+                </li>
+                <li className="flex items-center">
+                  <span className="inline-block w-4 h-4 bg-red-500 rounded-full mr-3"></span>
+                  <span>
+                    <strong>Hazardous</strong>: Batteries, chemicals, medical
+                    waste
                   </span>
                 </li>
                 <li className="flex items-center">
@@ -265,7 +227,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Smart Bin System with Image */}
+      {/* IoT Bin System with Image */}
       <section className="py-16 md:py-24 bg-white">
         <div className="max-w-6xl mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
@@ -276,10 +238,10 @@ export default function Home() {
               viewport={{ once: true }}
             >
               <h2 className="text-3xl md:text-4xl font-bold text-green-700 mb-6">
-                Intelligent Smart Bin
+                IoT Waste Bin
               </h2>
               <p className="text-lg mb-6">
-                Our smart bin system provides real-time feedback and automated
+                Our ioT Bin system provides real-time feedback and automated
                 sorting to make waste disposal effortless:
               </p>
               <ul className="space-y-4">
@@ -377,7 +339,7 @@ export default function Home() {
             >
               <img
                 src={smartBinImage}
-                alt="Smart Bin System"
+                alt="IoT Bin System"
                 className="w-full h-auto"
               />
             </motion.div>
@@ -515,8 +477,8 @@ export default function Home() {
               className={`${isMobile ? "order-2" : "order-1"}`}
             >
               <img
-                src={mobileAppImage}
-                alt="Waste Wise Mobile App"
+                src={wasteWise}
+                alt="Waste Wise"
                 className="rounded-xl shadow-xl mx-auto max-w-xs"
               />
             </motion.div>
