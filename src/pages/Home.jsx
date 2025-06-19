@@ -3,7 +3,10 @@ import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
 import heroVideo from "../assets/hero-section.mp4";
 import wasteWise from "../assets/logo2.png";
-import smartBinImage from "../assets/logo2.png";
+import PreBin from "../assets/iotBinpre.png";
+import iotBin from "../assets/WasteBinImg.png";
+import voiceBin from "../assets/audio.png";
+import transferLearning from "../assets/transferLearning.png";
 import webImage from "../assets/web.png";
 
 export default function Home() {
@@ -54,7 +57,7 @@ export default function Home() {
             <h2 className="text-3xl md:text-4xl font-bold text-green-700 mb-6">
               What is Waste Wise?
             </h2>
-            <p className="text-lg mb-6">
+            <p className="text-lg text-justify mb-6">
               Waste Wise is an AI-powered smart waste management system that
               combines cutting-edge Deep Learning with intelligent IoT
               technology. We aim to make waste sorting effortless, accurate, and
@@ -104,25 +107,24 @@ export default function Home() {
             Powerful Features at Your Fingertips
           </motion.h2>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+          <div className="grid grid-cols-1 text-center sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
             {[
               {
                 title: "AI-Powered Classification",
                 description:
                   "Using ResNet50 transfer learning to achieve high-accuracy waste recognition.",
-                image: wasteWise,
+                image: transferLearning,
               },
               {
                 title: "IoT Bin Control",
                 description:
                   "IoT Bin with real-time status display and automated sorting.",
-                image: smartBinImage,
+                image: PreBin,
               },
               {
                 title: "Interactive Voice Feedback",
-                description:
-                  "Voice notifications for user actions.",
-                image: wasteWise,
+                description: "Voice notifications for user actions.",
+                image: voiceBin,
               },
               {
                 title: "Seamless Web Integration",
@@ -169,14 +171,13 @@ export default function Home() {
               viewport={{ once: true }}
               className={`${isMobile ? "order-2" : "order-1"}`}
             >
-                <div className="rounded-lg overflow-hidden shadow-md">
-                  <img
-                    src={wasteWise}
-                    alt="Neuron Network"
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-                
+              <div className="rounded-lg overflow-hidden shadow-md">
+                <img
+                  src={transferLearning}
+                  alt="Neuron Network"
+                  className="w-full h-full object-cover"
+                />
+              </div>
             </motion.div>
 
             <motion.div
@@ -189,7 +190,7 @@ export default function Home() {
               <h2 className="text-3xl md:text-4xl font-bold text-green-700 mb-6">
                 Advanced Deep Learning at the Core
               </h2>
-              <p className="text-lg mb-6">
+              <p className="text-lg text-justify mb-6">
                 Leveraging the power of ResNet50 transfer learning, Waste Wise
                 classifies waste into four categories with exceptional
                 precision:
@@ -338,7 +339,7 @@ export default function Home() {
               className="rounded-xl overflow-hidden shadow-xl"
             >
               <img
-                src={smartBinImage}
+                src={iotBin}
                 alt="IoT Bin System"
                 className="w-full h-auto"
               />

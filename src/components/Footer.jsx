@@ -14,7 +14,7 @@ const Footer = () => (
           <h2 className="text-2xl font-bold flex items-center justify-center md:justify-start">
             <FaLeaf className="mr-2 text-green-200" /> Waste Wise
           </h2>
-          <p className="text-sm leading-relaxed">
+          <p className="text-sm text-justify leading-relaxed">
             A smart and eco-friendly platform for classifying and managing waste
             using AI and IoT technologies to create a cleaner environment.
           </p>
@@ -33,7 +33,7 @@ const Footer = () => (
               <FaPhone className="text-green-200" />
             </div>
             <div className="flex items-center justify-center md:justify-end gap-2 hover:text-green-200 transition duration-300">
-              <span>No 1 Trinh Van Bo, Hanoi</span>
+              <span>Hanoi, Vietnam</span>
               <FaMapMarkerAlt className="text-green-200" />
             </div>
           </div>
@@ -43,7 +43,7 @@ const Footer = () => (
       {/* Copyright */}
       <div className="mt-10 pt-6 border-t border-green-500 text-center">
         <p className="text-xs tracking-wide">
-          &copy; {new Date().getFullYear()} Smart Waste. All rights reserved.
+          &copy; {new Date().getFullYear()} Waste Wise. All rights reserved.
         </p>
       </div>
     </div>
